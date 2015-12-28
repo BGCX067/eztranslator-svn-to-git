@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<overlay id="easyTranslator" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="pref_manager.js"/>
+    <script src="tooltip.js"/>
+		<script src="main.js"/>
+		
+		<popup id="contentAreaContextMenu">
+			<menuitem label="temp" id="antonpod-et-translate" oncommand="ANPD.et.onContextMenu(event)"/>
+      <menuseparator id="antonpod-et-sep"/> 
+      <menu id="antonpod-et-choose" label="Set main dictionary" oncommand="ANPD.et.onSubmenu(event)">
+        <menupopup id="antonpod-et-submenu" onpopupshowing="ANPD.et.onSubmenuShowing(event)">
+        </menupopup>
+      </menu>         
+		</popup>
+		
+		<menupopup id="menu_ToolsPopup">
+			<menuitem id="antonpod-et-prefs" label="Ez Translator Options" insertbefore="prefSep"
+                oncommand="ANPD.et.onToolsMenu()"/>
+ 		</menupopup> 
+</overlay>

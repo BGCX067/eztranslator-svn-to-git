@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog
+    title="Add Dictionary"
+		type="child"
+		ondialogaccept="return onAddAccept()"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script src="options_add.js"/>
+	
+	<groupbox >
+		<caption label="Dictionary Name"/>
+		<textbox id="add-dic"/>
+	</groupbox>	
+	<groupbox >
+		<caption label="Dictionary URL (Use '*' as a text placeholder)"/>
+		<textbox id="add-url" width="270" multiline="true"/>
+	</groupbox>	
+  <caption id="error" style="color:red; text-align:center;" label=""/>
+</dialog>

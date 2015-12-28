@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog id="antonpod-et-quick" 
+    title="Quick Translate"
+    buttons=","
+		ondialogaccept="return onAccept()"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script src="quick.js"/>
+	<textbox id="antonpod-et-quick-textbox"/>
+</dialog>

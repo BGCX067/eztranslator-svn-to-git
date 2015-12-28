@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://easyTranslator/skin/options.css" type="text/css"?>
+
+<prefwindow id="preferences" 
+    title="Ez Translator Options"
+    buttons="accept,cancel"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+ 
+	<script src="options.js"/>
+  <script src="tree_view.js"/>
+	
+	<prefpane id="prefpane" label="EasyTranslator Options" onpaneload="onPrefpaneLoad()">
+		<preferences>
+			<preference id="pref-enable" name="extensions.easytranslator.enabled" type="bool"/>
+      <preference id="pref-background" name="extensions.easytranslator.background" type="bool"/>
+      <preference id="pref-position" name="extensions.easytranslator.position" type="string"/>
+      <preference id="pref-tooltip" name="extensions.easytranslator.tooltip" type="bool"/>
+      <preference id="pref-maxentries" name="extensions.easytranslator.maxentries" type="int"/>
+		</preferences>
+    
+    <broadcasterset>
+      <broadcaster id="enbr" disabled="false"/>
+    </broadcasterset>
+
+		<groupbox>
+			<caption label="Dictionaries"/>
+        <tree id="anpd-tree" rows="4" flex="10" editable="true" hidecolumnpicker="true" seltype="single"
+              onselect="onSelect()">
+          <treecols>
+              <treecol id="name" label="Dictionary" flex="1"/>
+              <treecol id="url" label="URL" flex="20"/>
+              <treecol id="main" label="Main" editable="true" type="checkbox" flex="0"/>
+          </treecols>
+          <treechildren>
+          </treechildren>
+        </tree>
+      <hbox>
+        <button id="delete" label="  Delete" oncommand="onDelete(event)"
+                  image="chrome://easyTranslator/skin/delete.png"/>
+        <button id="add" label="  Add" oncommand="onAdd()"
+                  image="chrome://easyTranslator/skin/add.png"/>
+        <spacer flex="1"/>
+        <button id="anpd-moveup" label="" oncommand="onMoveUp()"/>
+        <button id="anpd-movedown" label="" oncommand="onMoveDown()"/>
+			</hbox>
+		</groupbox>	
+
+<!--     <caption id="error" style="color:red; text-align:center;" label=""/>  -->
+    
+    <groupbox>
+      <caption label="Misc:"/>
+      <grid>
+ 
+        <columns>
+          <column/>
+          <column/>
+        </columns>
+
+        <rows>
+          <row>
+            <groupbox>
+              <checkbox id="tooltip" label="Enable popup" preference="pref-tooltip"
+                        oncommand="onTooltip(event)"/>
+              <hbox align="center">
+                <label id="maxentries-label" value="Max number of entries:" observes="toolbr"/>
+                <textbox id="maxentries-textbox" type="number" width="30" preference="pref-maxentries"/>
+              </hbox>
+            </groupbox>
+
+            <groupbox>
+              <checkbox id="enable" label="Enable context menu entry" preference="pref-enable"
+                        oncommand="onEnable(event)"/>
+              <hbox align="center">
+                <label id="positionlabel" value="Position:" 
+                       observes="enbr"/>
+                <menulist preference="pref-position"
+                          observes="enbr">
+                  <menupopup>
+                    <menuitem label="Top" value="top"/>
+                    <menuitem label="Bottom" value="bottom"/>
+                  </menupopup>
+                </menulist>  
+              </hbox>
+            </groupbox>  
+          </row>
+          
+          <row>
+            <checkbox label="Open result tab in background" preference="pref-background"/>
+          </row>  
+        </rows>
+      </grid>
+    </groupbox> 
+    <hbox>
+      <button label="Get Dictionaries" oncommand="onGetDictionaries()"/>
+    </hbox>
+	</prefpane>
+</prefwindow>
